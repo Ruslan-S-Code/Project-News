@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nachrichten App</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script type="module" src="/main.ts"></script>
+    <!-- Add a modern font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1 data-translate="app_title" class="title-heading">
+            Nachrichten App
+        </h1>
+        <div class="controls">
+            <div class="filter-group">
+                <label data-translate="search_term">Suchbegriff</label>
+                <input type="text" id="searchInput" data-translate-placeholder="search_placeholder">
+                <button id="searchBtn" data-translate="search_button">Suchen</button>
+            </div>
+
+            <div class="filter-group">
+                <label data-translate="language">Sprache</label>
+                <select id="languageSelect">
+                    <option value="de">Deutsch</option>
+                    <option value="en">English</option>
+                    <option value="fr">Français</option>
+                    <option value="es">Español</option>
+                    <option value="it">Italiano</option>
+                    <option value="pt">Português</option>
+                    <option value="ru">Русский</option>
+                    <option value="uk">Українська</option>
+                    <option value="tr">Türkçe</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label data-translate="category">Kategorie</label>
+                <select id="categorySelect"></select>
+            </div>
+            <div class="filter-group">
+                <label data-translate="sort_by">Sortieren nach</label>
+                <select id="sortSelect">
+                    <option value="relevancy" data-translate="relevance">Relevanz</option>
+                    <option value="popularity" data-translate="popularity">Beliebtheit</option>
+                    <option value="publishedAt" data-translate="date">Datum</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div id="newsContainer" class="news-grid"></div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <p data-translate="footer">&copy; 2025 Nachrichten App. Alle Rechte vorbehalten.</p>
+            <div class="social-links">
+                <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
