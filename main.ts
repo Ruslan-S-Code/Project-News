@@ -1,6 +1,3 @@
-const API_KEY = "0e30f5157e8a490cb1a3a540b56f7d52";
-const NEWS_API_URL = "https://newsapi.org/v2/everything";
-
 interface Article {
   title: string;
   description: string;
@@ -283,8 +280,11 @@ function updateTranslations(lang: string) {
     .join("");
 }
 
-async function fetchNews() {
-  const params = new URLSearchParams({
+/* async function fetchNews() {
+  const params = new URLSearchParams();
+  const API_KEY = "0e30f5157e8a490cb1a3a540b56f7d52";
+  const NEWS_API_URL = "https://newsapi.org/v2/everything";
+  ({
     q: elements.searchInput.value || "news",
     language: elements.languageSelect.value,
     sortBy: elements.sortSelect.value,
@@ -293,6 +293,29 @@ async function fetchNews() {
 
   try {
     const response = await fetch(`${NEWS_API_URL}?${params}`);
+    if (!response.ok) throw new Error("Fehler beim Laden der Nachrichten");
+    const data = await response.json();
+    displayNews(data.articles);
+  } catch (error) {
+    elements.newsContainer.innerHTML = `<p class="error">${
+      translations[elements.languageSelect.value].error_loading
+    }</p>`;
+  }
+} */
+
+async function fetchNews() {
+  const params = new URLSearchParams();
+  const API_KEY = "0e30f5157e8a490cb1a3a540b56f7d52";
+  const NEWS_API_URL = "https://newsapi.org/v2/everything";
+
+  // Add parameters to the URLSearchParams object
+  params.append("q", elements.searchInput.value || "news");
+  params.append("language", elements.languageSelect.value);
+  params.append("sortBy", elements.sortSelect.value);
+  params.append("apiKey", API_KEY);
+
+  try {
+    const response = await fetch(`${NEWS_API_URL}?${params.toString()}`);
     if (!response.ok) throw new Error("Fehler beim Laden der Nachrichten");
     const data = await response.json();
     displayNews(data.articles);
